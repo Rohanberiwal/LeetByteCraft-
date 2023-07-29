@@ -382,3 +382,137 @@ class Main
 
     
   } 
+// maxium subarray sum error 
+
+import java.util.*;
+class Main
+  {
+    static void subarray(int array[] , int size , int sum)
+    {
+      
+      int newsum= 0;
+      for(int i = 1 ; i<=size ; i++)
+        {
+          
+          for(int k = i +1 ; k<= size ; k++)
+            {
+               newsum  = array[i]+array[k] ;
+              
+             while(newsum<sum)
+               
+                  k++ ;
+                 newsum = newsum+array[k] ;
+               }
+          
+            }
+      System.out.println(newsum);
+        }
+  
+    
+    public static void main(String agrs[])
+    {
+      Scanner sc = new Scanner(System.in);
+      int size = sc.nextInt() ;
+      int array[]= new int [size+1 ] ;
+      int sum = sc.nextInt() ;
+      for(int i = 1 ; i<=size ; i++)
+        {
+          System.out.print(" enter ");
+          array[i] = sc.nextInt() ;
+          
+        }
+      subarray(array , size , sum) ;
+      
+    }
+  }
+// missing number in the array // one liner
+class Solution {
+  int missingNumber(int array[], int n) {
+    return (n*(n+1))/2-Arrays.stream(array).sum();
+  }
+}
+// long ALGORITHM 
+import java.util.*;
+class Main
+{
+  public static void main(String args[])
+  {
+    Scanner sc = new Scanner(System.in) ;
+    int size = sc.nextInt() ;
+    int array[] = new int[size] ;
+  for(int k =0  ; k<size; k++)
+    {
+      System.out.print(" enter ") ;
+      array[k] = sc.nextInt() ;
+    }
+    for(int i = 0 ; i<size ; i++)
+      {
+        for(int k= i+1 ; k<size ; k++)
+          {
+            if(array[i]>array[k])
+            {
+              int temp  = array[i] ;
+            array[i] = array[k] ;
+            array[k] =temp;
+            }
+            
+            
+          }
+      }
+    for(int i = 0 ; i<size  ; i++)
+      {
+        System.out.print(" "+array[i]) ;
+      }
+    int min = array[0] ;
+    int max = array[size-1] ;
+    int fnew = max-min ;
+    int posarray[] = new int[max-min] ;
+    for(int i= 0 ; i<fnew ; i++)
+      {
+        array[i] = posarray[i] ;
+      }
+    for(int i = min ; i<max ; i++)
+      {
+        if(posarray[i]!=i && posarray[i]!=0)
+        {
+            System.out.print(" "+posarray[i]) ;
+        }
+      }
+  }
+}
+// minimum ju8mpws needed 
+import java.util.*;
+class Main 
+  {
+    public static void main(String args[])
+    {
+      Scanner sc = new Scanner(System.in) ;
+      int size = sc.nextInt() ;
+      int array[] = new int[size];
+      for(int i = 0 ; i<size  ;i++)
+        {
+          System.out.print("enter ") ;
+          array[i] = sc.nextInt() ;
+          
+        }
+      int counter = 0;
+      for(int i = 0  ; i<size ; i++)
+        {
+          if(array[0]==0)
+          {
+            counter = 0 ;
+            System.out.print(counter) ;
+          }
+          else 
+          {
+            i = i+array[i] ;
+            counter ++ ;
+            if(i>size)
+            {
+              System.out.print("the max values that are needed is"+counter ) ;
+            }
+            
+          }
+        }
+    }
+  }
