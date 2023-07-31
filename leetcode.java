@@ -778,3 +778,84 @@ class Solution {
             arr[high]=temp;
     }
 }
+// leetcode 169 Majoprity elemtns
+import java.util.*;
+class Main
+{
+  public static void counter(int array[], int size)
+  {
+    int count = 0 ;
+    int arraynew[] = new int [size];
+    for(int i = 0 ; i<size ; i++)
+    {
+      count = 0 ; 
+      for(int k = 0  ; k<size ; k++)
+      {
+        if(array[i]== array[k])
+        {
+          count++ ;
+
+        }
+        
+      }
+      arraynew[i]= count ;
+    }
+    
+    System.out.print("\n");
+    for(int l = 0 ; l<size ; l++)
+    {
+      for(int k = l+1 ; k<size ; k++)
+      {
+        if(array[k]>array[l])
+        {
+        int temp = arraynew[l];
+        arraynew[l] = arraynew[k] ;
+        arraynew[k]= temp ;
+        }
+      }
+     
+    }
+     System.out.println(" "+arraynew[0]) ;
+    
+  }
+  public static void main(String args[])
+  {
+      Scanner sc = new Scanner(System.in);
+      int size = sc.nextInt() ;
+      int array[]= new int[size] ;
+      for(int k = 0 ; k<size ; k++)
+      {
+        System.out.print("enter ");
+        array[k]= sc.nextInt() ;
+
+      }
+     
+      counter(array  , size);
+  }
+}
+// short cut 169 using the inbuilt functions 
+class Solution {
+    public int majorityElement(int[] nums) {
+       int size = nums.length ;
+       int newarray[] = new int[size] ;
+       int count = 0 ;
+       int index = 0 ;
+       for(int i =0; i<size ; i++)
+       {
+           count = 0 ;
+           index = 0 ;
+           for(int k = 0 ; k<size ; k++)
+           {
+               if(nums[i]==nums[k])
+               {
+                    count ++ ;
+                    index = i ;
+                    
+               }
+           }
+           newarray[i] = count++ ;
+       }
+      Arrays.sort(newarray);
+       return newarray[size-1];
+    }
+}
