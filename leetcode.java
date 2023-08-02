@@ -859,3 +859,78 @@ class Solution {
        return newarray[size-1];
     }
 }
+// leetcode q20 valid parenthesis 
+Stack <Character> st=new Stack<Character>();
+        
+        char ar[]=s.toCharArray();
+        for(char c:ar)
+        {
+            if(c=='(')
+            {
+                st.push(')');
+            }
+            else if(c=='{')
+            {
+                st.push('}');
+            }
+            else if(c=='[')
+            {
+                st.push(']');
+            }
+            else if(st.isEmpty() || st.pop()!=c)
+            {
+                return false;
+            }
+
+        }
+
+        return st.isEmpty();
+// k time rotation of a array 
+import java.util.*;
+
+public class krotate
+{
+
+   static void rotateone(int arr[],int n)
+   {
+
+      int t=arr[n-1];
+        for(int i=n-2;i>=0;i--)
+        {
+            arr[i+1]=arr[i];
+        }
+        arr[0]=t;
+   }
+   public static void main(String args[])
+   {
+
+      int n;
+
+      System.out.println("Enter how many values ");
+      Scanner sc=new Scanner(System.in);
+
+      n=sc.nextInt();
+
+      int ar[]=new int[n];
+
+      for(int i=0;i<n;i++)
+      {
+         ar[i]=sc.nextInt();
+      }
+      System.out.println("How many times to shift ");
+      int k=sc.nextInt();
+
+      for(int i=0;i<k;i++)
+      {
+         rotateone(ar,n);
+      }
+
+      System.out.println("After k rotation ");
+      for(int i=0;i<n;i++)
+      {
+         System.out.println(ar[i]+" ");
+      }
+
+
+   }
+} 
