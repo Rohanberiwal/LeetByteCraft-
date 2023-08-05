@@ -934,3 +934,401 @@ public class krotate
 
    }
 } 
+
+// leetcode question 21 merger two sorted list used selection sort in this .
+import java.util.*;
+class Main 
+{
+    public static void selectionsort(int newarray[] , int s )
+    {
+        int min_index  =0 ;
+        for(int i = 0 ;i<s; i++)
+        {
+             min_index = i ; 
+            {
+                for(int j = min_index+1 ; j<s ; j++ )
+                {
+                    min_index = j  ;
+                    if(newarray[i]>newarray[j])
+                    {
+                        int temp = newarray[i] ;
+                        newarray[i] = newarray[j] ;
+                        newarray[j] = temp ;
+                    }
+                }
+            }
+        }
+        System.out.print("\n");
+        for (int u = 0 ; u<s  ; u++)
+        {
+            System.out.print(" "+newarray[u]);
+        }
+    }
+   
+    public static void main(String  args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size = sc.nextInt() ;
+        int nums = sc.nextInt() ;
+        int array[] = new int[size];
+        int narray[] = new int[nums];
+        for(int i = 0 ; i<size  ; i++)
+        {
+            System.out.println("enter ") ;
+            array[i] = sc.nextInt() ;
+
+        }
+        for(int i = 0 ; i<nums  ; i++)
+        {
+            System.out.println("enter for the second array  ") ;
+            narray[i] = sc.nextInt() ;
+            
+        }
+        int s = size +nums ;
+        int newarray[] = new int[s] ;
+        int j = 0 ;
+        while(j!=size)
+        {
+            newarray[j] = array[j] ;
+            j++ ;
+        }
+        int k = 0 ;
+        
+            while(k!=nums)
+            {
+                newarray[j+k] = narray[k];
+                k++; 
+            }
+        for(int i = 0 ; i<s ; i++)
+        {
+            System.out.print(" "+newarray[i]) ;
+        }
+        selectionsort(newarray ,s );
+    } 
+}
+// leetcode 997 square and then sorting 
+import java.util.*;
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size = sc.nextInt() ;
+        int array[]  = new int [size];
+        for(int i = 0 ; i<size ; i++)
+        {
+            System.out.print("enter ") ;
+            array[i] = sc.nextInt() ;
+        }
+        Arrays.sort(array) ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            array[i] = (int)Math.pow(array[i],2) ;
+            System.out.print(" "+array[i]) ;
+        }
+        
+    }
+}
+ // using inbuilt functions 997 
+ import java .util.* ;
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+       int size = nums.length ;
+       for(int j = 0 ; j<size ; j++)
+        {
+            nums[j] = (int)Math.pow(nums[j],2) ;
+        }
+        Arrays.sort(nums);
+    return nums ;
+    }
+      
+}
+
+// question 28 leetcode // error in the output .
+import java.util.*;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        String haystack = sc.nextLine() ;
+        String needle  = sc.nextLine() ;
+        char array[] = haystack.toCharArray() ;
+        char arr[] = needle.toCharArray() ;
+        int leng  = array.length ;
+        int leg = arr.length ;
+        char ch[ ] = new char[leng] ;
+        for(int i= 0 ; i<leng ; i++)
+        {
+            System.out.print(" "+array[i]);
+        }
+        for(int k = 0 ; k<leg ; k++)
+        {
+            System.out.print(" "+arr[k]) ;
+        }
+        for(int i = 0 ; i<leng ; i++)
+        {
+            for(int k =0 ; k<leg ; k++)
+            {
+                if(array[i]==array[k])
+                {
+                        ch[i] = array[i] ;
+                }
+        }
+         for(int s = 0 ; s<leng ; s++)
+         {
+            if(ch[s]==arr[s])
+            {
+                System.out.println( " yes ") ;
+            }
+         }
+     }
+}
+}
+
+// USE THE NAVE' BAYER'S ALGORITHM IN THIS 
+int count = 0 ;
+        int n = haystack.length();
+        int m = needle.length();
+        if(n == 1 && m==1){
+            return 0;
+        }else{
+            for(int i = 0 ; i<= n-m  ; i++){
+            for(int j = 0; j<m ; j++){
+                if(haystack.charAt(i + j) != needle.charAt(j)){
+                    //System.out.println(i);
+                    break;
+                }
+
+                //System.out.println(i);
+                    
+                //System.out.println()   
+
+                if(j == m - 1){
+                    return i;
+                }
+              
+            }
+
+          
+        }
+        }
+
+
+        return -1;
+      }
+    }
+  }
+}
+
+// leetocode q35 solution 
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int size = nums.length ;
+        int index = 0 ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            if(nums[i]==target)
+            {
+                //System.out.println(""+i) ;
+                index = i ;
+            
+                break ;
+            }
+            else 
+            {
+                if(nums[i]<target &&  i == size -1 )
+                {
+                    //System.out.println(""+i+1) ;
+                    index = i+1 ;
+                    break ;
+                }
+                else if(nums[i]>target)
+                {
+                   // System.out.print(""+(i-1)) ;
+                   if(i!=0)
+                   { 
+                    index = i-1 ;
+                    break ;
+                    }
+                    else if(i==0 & nums[i]>target)
+                    {
+                        index = 0 ;
+                        break ;
+                    }
+                  
+                }
+                else if(i !=size-1 && nums[i]<target && nums[i+1]>target)
+                {
+                    //System.out.println(""+(i+1)) ;
+                    index = i+1 ;
+                    break ;
+                }
+                
+            }
+    }
+    return index ;
+
+    }
+} 
+// leetcode 34 logic of -1 is wrong 
+import java.util.*;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size = sc.nextInt() ;
+        int target  = sc.nextInt() ;
+        int array[]= new int[size] ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            System.out.print(" enter ");
+            array[i] = sc.nextInt()  ;
+        }
+        Arrays.sort(array) ;
+        int ind = 0 ;
+        int index[]= new int[size];
+        for(int i = 0 ; i<size ; i++)
+        {
+            if(array[i]==target)
+            {
+                
+               index[i] = i  ;
+            }
+            else 
+            {
+                ind = i ;
+                index[i] = -1 ;
+            }
+            
+        }
+        for(int i = 0 ; i<size ; i++)
+        {
+            if(index[i]!=-1)
+            {
+                System.out.println("index is "+i) ;
+            }
+
+            
+        }
+        
+        
+    }
+}
+
+// leetcode question on nlinkedklist deletion java  // error on the code 19
+// use the linked class simply . 
+
+if(head==null){
+            return null;
+        }
+        if(head.next ==null && n==1){
+            return null;
+        }
+        
+        ListNode curr = head;
+        int p=0;
+        while(curr!=null){
+            curr = curr.next;
+            p++;
+        }
+        if(n==p){
+            head = head.next;    
+            return head;
+        }
+        ListNode a = head;
+        int t=0;
+        while(t<(p-n-1)){
+          a= a.next ;
+          t++;
+        }
+        a.next = a.next.next;
+  return head;
+
+// leetcode 136 
+import java.util.*;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc  = new Scanner(System.in) ;
+        int size = sc.nextInt() ;
+        int array[] = new int[size] ;
+        int extra[] = new int[size] ;
+        int count = 0;
+        for(int i = 0 ; i<size ; i++)
+        {
+            System.out.print("enter ");
+            array[i] = sc.nextInt() ;
+        }
+        for(int i = 0 ; i<size ; i++)
+        {   
+            count = 0;
+            for(int k = 0 ; k<size ; k++)
+            {
+                if(array[i]==array[k])
+                {
+                    count ++ ;
+                }
+            }
+            extra[i] = count ;
+        }
+        int numindex = 0;
+        for(int i = 0 ; i<size ; i++)
+        {
+            if(extra[i]!=2)
+            {
+                    numindex = i ;
+                    System.out.print(" number is  "+array[numindex]) ;
+                    break ;
+            }
+        }
+        
+    }
+}
+// leetcode question 268 missing number // using the flaging concept in java 
+int arr[] = new int[nums.length + 1];
+        for(int i=0;i<nums.length;i++)
+        {
+            arr[nums[i]] = 1;
+        }
+        for(int i=0;i<arr.length;i++)
+        {
+            if(arr[i] == 0)
+            {
+                return i;
+            }
+        }
+        return 0;
+// leetcode q 58 length of last word 
+import java.util.*;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        String sent = sc.nextLine() ;
+        String[] array = sent.split(" ");
+        int num = array.length ;
+       // System.out.print(array[0]) ;
+        char newarray[] = array[num-1].toCharArray() ;
+        int size = newarray.length ;
+        System.out.print(" length is "+size) ;
+    }
+}
+// linkedlist removal of duplicates
+ ListNode temp = head;
+        while(temp!=null && temp.next != null) {
+            if(temp.val == temp.next.val) {
+                temp.next = temp.next.next;
+            }else{
+                temp = temp.next;
+            }
+        }
+        return head;
+
+
+
+   }
+} 
