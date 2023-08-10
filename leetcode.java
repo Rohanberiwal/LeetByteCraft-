@@ -1429,3 +1429,239 @@ class Solution {
         return false ;
     }
 }
+// 3 sum question 15 
+import java.util.* ;
+class Main 
+{
+    public static void threesum(int array[] , int size)
+    {
+        int sum =0 ;
+        for(int  i = 0 ; i<size  ; i++)
+        {
+            for(int j = i+1  ; j<size  ; j++)
+            {
+                sum  = 0 ;
+                for(int k = j+1  ;k<size ;k++)
+                {
+                    sum  = array[i]+array[j]+array[k] ;
+                    if(i!=j&&j!=k&&k!=i && sum ==0)
+                    {
+                        System.out.println(" "+i+" "+j+" "+k) ;
+                    }
+                }
+            }
+        }
+    }
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size = sc.nextInt() ;
+        int array[] = new int[size] ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            System.out.print(" enter ");
+            array[i] = sc.nextInt() ;
+
+        }
+        threesum(array , size) ;
+    }
+}
+//LEETCODE QUESTION 16 3SUM CLOSET 
+ import java.util.*;
+ class Main 
+ {
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size  = sc.nextInt() ; 
+        int array[] = new int[size] ;
+        int target =  sc.nextInt() ;
+        int sum = 0 ;
+        for(int y = 0 ; y<size ; y++)
+        {
+            System.out.print("enter") ;
+            array[y] = sc.nextInt() ;
+        }
+        for(int i = 0 ; i<size ; i++)
+        {
+            for(int j = i+1 ; j<size  ; j++)
+            {
+                sum  =0  ;
+                for(int  k =  j+1  ; k<size  ; k++)
+                {
+                    sum = array[i]+array[j]+array[k] ;
+                    if(sum == target)
+                    {
+                        System.out.print(" "+i) ;
+                        System.out.print(" "+j) ;
+                        System.out.print(" "+k) ;
+                        System.out.println(" sum "+sum)  ;
+                       
+                    
+                    }
+                    if(sum==0)
+                    {
+                        System.out.print(" "+0) ;
+                        break ;
+                    }
+                   
+                }
+            }
+        }
+    }
+ }
+// leetcode question 18 4 sum index 
+import java.util.*;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size = sc.nextInt()  ;
+        int array[] = new int[size] ;
+        int sum = 0 ;
+        int target = sc.nextInt() ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            System.out.print(" enter ") ;
+            array[i] = sc.nextInt() ;
+        }
+        for(int i = 0 ; i<size ; i++)
+        {
+            for(int j = i+1 ; j<size ; j++)
+            {
+                for(int k = j+1  ; k<size ; k++)
+                {
+                    sum = 0 ;
+                    for(int q = k+1 ; q<size ; q++)
+                    {
+                        sum = array[i] + array[j]+ array[k]+ array[q]  ;
+                        if(sum==target)
+                        {
+                            System.out.println("\n") ;
+                            System.out.print(" "+i) ;
+                            System.out.print(" "+j) ;
+                            System.out.print(" "+k) ;
+                            System.out.print(" "+q) ;
+                            System.out.println("\n") ;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// leetcode 18 values
+import java.util.*;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size = sc.nextInt()  ;
+        int array[] = new int[size] ;
+        int sum = 0 ;
+        int target = sc.nextInt() ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            System.out.print(" enter ") ;
+            array[i] = sc.nextInt() ;
+        }
+        for(int i = 0 ; i<size ; i++)
+        {
+            for(int j = i+1 ; j<size ; j++)
+            {
+                for(int k = j+1  ; k<size ; k++)
+                {
+                    sum = 0 ;
+                    for(int q = k+1 ; q<size ; q++)
+                    {
+                        sum = array[i] + array[j]+ array[k]+ array[q]  ;
+                        if(sum==target)
+                        {
+                            System.out.println("\n") ;
+                            System.out.print(" "+array[i]) ;
+                            System.out.print(" "+array[j]) ;
+                            System.out.print(" "+array[k]) ;
+                            System.out.print(" "+array[q]) ;
+                            System.out.println("\n") ;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// return the answer in the form of array using <list> formats . 
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+      Arrays.sort(nums);
+        List<List<Integer>> res=new ArrayList<>();
+        
+        if(nums.length<4){
+            return res;
+        }
+        
+        for(int i=0;i<=nums.length-4;i++){
+            if(i!=0 && nums[i]==nums[i-1]){
+                continue;
+            }
+            int val=nums[i];
+            List<List<Integer>> subList=threeSum(nums,i+1,target-val);
+            
+            for(List<Integer> ls:subList){
+                ls.add(val);
+                res.add(ls);
+            }
+        }
+        
+        return res;
+    }
+    
+    public List<List<Integer>> threeSum(int []nums, int si, int target){
+        List<List<Integer>> res=new ArrayList<>();
+        
+        for(int i=si;i<=nums.length-3;i++){
+            if(i!=si && nums[i]==nums[i-1]){
+                continue;
+            }
+            
+            long val=(long)target-(long)nums[i];
+            int s=i+1;
+            int e=nums.length-1;
+            
+            while(s<e){
+                if(s!=i+1 && nums[s]==nums[s-1]){
+                    s++;
+                    continue;
+                }
+                
+                if(e!=nums.length-1 && nums[e]==nums[e+1]){
+                    e--;
+                    continue;
+                }
+                
+                if(((long)nums[s]+(long)nums[e])==(long)val){
+                    List<Integer> subList=new ArrayList<>();
+                    subList.add(nums[i]);
+                    subList.add(nums[s]);
+                    subList.add(nums[e]);
+                    
+                    res.add(subList);
+                    s++;
+                    e--;
+                }else if(((long)nums[s]+(long)nums[e])<(long)val){
+                    s++;
+                }else{
+                    e--;
+                }
+            }
+        }
+        
+        return res;
+    }
+}
