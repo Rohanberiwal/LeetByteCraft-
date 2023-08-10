@@ -1665,3 +1665,26 @@ class Solution {
         return res;
     }
 }
+// leetcode 33 
+class Solution {
+    public int search(int[] nums, int target) {
+    int num = -1 ;
+    int size = nums.length ;
+    for(int i = 0 ; i<size ; i++)
+    {
+        if(nums[i]==target)
+        {
+            num = i ;
+        }
+        
+    }
+    if(num!=(-1))
+    {
+        return num ; 
+    }
+    else
+    {
+        return -1 ;
+    }
+    }
+}
