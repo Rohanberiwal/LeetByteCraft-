@@ -27,7 +27,7 @@ class Main
         {
           System.out.print("True");
           break ;
-        }
+        }java 
         else 
         {
         flag = false ;
@@ -1327,8 +1327,105 @@ class Main
             }
         }
         return head;
+// leetcode 66 
+import java.util.*;
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size = sc.nextInt() ;
+        int array[] = new int[size] ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            System.out.print("enter ") ;
+            array[i] = sc.nextInt() ;
+        }
+        array[size-1]= array[size-1]+1 ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            System.out.print(" "+array[i]);
+        }
+    }
+}
+// leetcode question  66 fastest 
+class Solution {
+    public int[] plusOne(int[] digits) {
+    for (int i = digits.length - 1; i >= 0; i--) {
+	if (digits[i] < 9) {
+		digits[i]++;
+		return digits;
+	}
+	digits[i] = 0;
+}
+
+digits = new int[digits.length + 1];
+digits[0] = 1;
+return digits;
+    }
+}
+// leetcode question 34 // error in this the index are not getting uopdated . 
+
+import java.util.*;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size = sc.nextInt()  ;
+        int array[] = new int [size] ;
+        int index[] = new int[2] ;
+        for(int i= 0 ; i<size ; i++)
+        {
+            System.out.print(" enter ") ;
+            array[i] = sc.nextInt() ;
+        }
+        int target  = sc.nextInt() ;
+
+        for(int i = 0 ; i<size ; i++)
+        {
+            for(int j = i+1  ; j <size  ; j++  )
+            {
+            if(array[i] ==target)
+            {
+                index[0] = i  ;
+            }
+            if(array[i] == target && array[j]!=target && j == i+1)
+            {
+                index[1]  = i  ; 
+                break ;
+            }
+            else 
+            {
+                    index[1]=  -1 ;
+                    index[0] = -1  ;
+            }
+        }
+        }
+        for(int k = 0 ; k<2 ; k++)
+        {
+            System.out.print("  "+index[k]) ;
+        }
+    }
+}
+// leetcode question problem 100
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if(p==null && q==null)
+        {
+            return true ;
+        }
+        else if(p==null || q==null)
+        {
+            return false ;
+
+        }
+        else if(p!=null && q!=null)
+        {
+            return (p.val==q.val) && isSameTree(p.left , q.left) && isSameTree(p.right, q.right);
 
 
-
-   }
-} 
+        }
+        return false ;
+    }
+}
