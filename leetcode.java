@@ -1688,3 +1688,378 @@ class Solution {
     }
     }
 }
+// swap leetcode 24 implemetartion of linked list using array 
+
+import java.util.*;
+class Main
+{
+    public static void swap(int array[] , int size)
+    {
+        if(size %2==0)
+        {
+            for(int i = 0 ; i<size ; i=i+2)
+            {
+                if(i!=size-2 && i<size )
+                {
+                    int temp = array[i] ;
+                    array[i]= array[i+1] ;
+                    array[i+1] = temp  ;
+                }
+                else 
+                {
+                    continue ;
+                }
+            }
+        }
+        else 
+        {
+            for(int i = 0 ; i<size ; i = i+2)
+            {
+                  if(i<size-2)
+                {
+                    int temp = array[i] ;
+                    array[i]= array[i+1] ;
+                    array[i+1] = temp  ;
+                }
+                else 
+                {
+                    continue ;
+                }
+
+            }
+        }
+        for(int i = 0   ; i<size ; i++)
+        {
+            System.out.print(" "+array[i]);
+        }
+    }
+    public static void main(String args[])
+    {
+        Scanner sc= new Scanner(System.in) ;
+        int size = sc.nextInt() ;
+        int array[] = new int[size] ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            System.out.print(" enter ") ;
+            array[i] = sc.nextInt() ;
+        }
+        swap(array , size) ;
+    }
+}
+// 121 leetocde final solution 
+
+int min=prices[0];
+
+      int maxp=0;
+
+      for(int i=0;i<prices.length;i++)
+      {
+
+        if(prices[i]<min)
+        {
+            min=prices[i];
+        }
+        if(prices[i]-min >maxp)
+        {
+          maxp=prices[i]-min;
+        }
+
+      }
+      return maxp;
+
+// leetcode 2 d matrix q74
+import java.util.*;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size = sc.nextInt() ;
+        int array[][]=  new int[size][size] ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            for(int j = 0 ; j<size ; j++)
+            {
+                System.out.print("emter the input ") ;
+                array[i][j] = sc.nextInt() ;
+
+            }
+
+        }
+        for(int i = 0 ; i<size ; i++)
+        {
+            for(int j = 0 ; j<size ; j++)
+            {
+                System.out.print(" "+array[i][j]) ;
+            }
+            System.out.print("\n") ;
+        }
+        int target = sc.nextInt() ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            for(int j = 0 ; j<size ; j++)
+            {
+                if(array[i][j]==target)
+                {
+                    System.out.println("element found at "+i+" "+j) ;
+                }
+            }
+        }
+    }
+
+// leetcode240 search int the matrix II
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int sum = 0 ;
+        boolean flag = false ;
+        int m  = matrix.length ;
+        int n  = matrix[0].length ;
+        for(int i = 0 ; i<m  ; i++)
+        {
+            sum = 0 ;
+            for(int j = 0 ; j<n  ; j++)
+            {
+                sum = sum + matrix[i][j]  ;
+                if(sum==target)
+                {
+                    flag = true  ;
+                }
+            }
+        }
+        return flag ;
+
+    }
+}
+// binary search appiorach 
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+         int left, right, mid;
+        for (int i = 0; i < matrix.length; i++) {
+            left = 0;
+            right = matrix[i].length - 1;
+
+            if (matrix[i][right] >= target) {
+
+                while (left <= right) {
+                    mid = left + (right - left) / 2;
+
+                    if (matrix[i][mid] == target) {
+                        return true;
+                    } else if (matrix[i][mid] < target) {
+                        left = mid + 1;
+                    } else {
+                        right = mid - 1;
+                    }
+                }
+            }
+        }
+
+        return false;
+
+    }
+}
+// leetcode 852 lon(array.klenght)time 
+
+class Solution {
+    public int peakIndexInMountainArray(int[] arr) {
+        int index = 0 ;
+       int size = arr.length  ;
+       int array[] = new int [size] ;
+       for(int i = 0 ; i<size  ; i++)
+       {
+           array[i] = arr[i] ;
+       }
+       Arrays.sort(array) ;
+       int peak = array[size-1] ;
+       for(int i = 0 ; i<size ; i++)
+       {
+           if(arr[i]==peak)
+           {
+               index = i ;
+           }
+       }
+       return index ;
+
+
+    }
+
+}
+
+// leetcode 162
+class Solution {
+    public int findPeakElement(int[] nums) {
+         int index = 0 ;
+       int size = nums.length  ;
+       int array[] = new int [size] ;
+       for(int i = 0 ; i<size  ; i++)
+       {
+           array[i] = nums[i] ;
+       }
+       Arrays.sort(array) ;
+       int peak = array[size-1] ;
+       for(int i = 0 ; i<size ; i++)
+       {
+           if(nums[i]==peak)
+           {
+               index = i ;
+           }
+       }
+       return index ;
+
+
+    }
+}
+// 189 leetcode 37/38 time limit excedded 
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n = nums.length  ;
+        int z= 0 ;
+       while(z!=k)
+        {
+        int t=nums[n-1];
+        for(int i=n-2;i>=0;i--)
+        {
+            nums[i+1]=nums[i];
+        }
+        nums[0]=t;
+        z++ ;
+        }
+    }
+}
+// leetcode 128
+class Solution {
+    public int longestConsecutive(int[] nums) {
+      
+        if(nums.length < 2)
+            return nums.length;
+        
+        Arrays.sort(nums);
+        
+        int max = 1;
+        int tempMax = 1;
+        for(int i = 1; i < nums.length; i ++)
+        {
+            if(nums[i] == nums[i-1] + 1)
+            {
+                tempMax ++;
+            }
+            else if(nums[i - 1] != nums[i])
+            {
+                max = Math.max(max, tempMax);
+                tempMax = 1;
+            }
+        }
+        return max = Math.max(max, tempMax);
+    }
+}
+
+// unique path II doubt dynamic programming 
+
+class Solution {
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        int m = obstacleGrid.length ;
+        int n = obstacleGrid[0].length;
+        int dp[][] = new int [m+1][n+1];
+        if(obstacleGrid[0][0] != 1)
+        dp[1][1] = 1;
+        for (int i = 1; i <= m; i++)
+            for (int j = 1; j <= n; j++)
+                if (obstacleGrid[i - 1][j - 1] != 1)
+                    dp[i][j] += dp[i - 1][j] + dp[i][j - 1];
+        return dp[m][n];
+    }
+}
+// leetcode 283 
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int size = nums.length  ;
+        int k = 0 ;
+        int count=0 ;
+        for(int i = 0 ; i<size  ; i++)
+        {
+            if(nums[i]!=0)
+            {
+                nums[k] = nums[i] ;
+                k++ ;
+                count ++ ;
+            }
+        }
+        for(int s = k ; s<size ; s++)
+        {
+            nums[s]=0 ;
+
+        }
+  
+    }
+}
+// binary search 
+class Solution {
+    public int search(int[] nums, int target) {
+         int l = 0, r = nums.length - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+ 
+            if (nums[m] == target)
+                return m;
+ 
+           
+            if (nums[m] < target)
+                l = m + 1;
+
+            else
+                r = m - 1;
+        }
+        return -1;
+    }
+}
+// leetcode 2529
+class Solution {
+    public int maximumCount(int[] nums) {
+        int pos = 0 ;
+        int neg = 0 ;
+        int size = nums.length ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            if(nums[i]<0)
+            {
+                neg ++ ;
+            }
+            else if(nums[i]>0)
+            {
+                    pos ++ ;
+            }
+            else if(nums[i]==0)
+            {
+                continue ;
+            }
+        }
+        if(pos>neg)
+        {
+            return pos  ;
+        }
+        else
+        {
+            return neg ;
+        }
+    }
+}
+// 1351 leetcode 
+class Solution {
+    public int countNegatives(int[][] grid) {
+        int  m = grid.length ;
+        int n = grid[0].length ;
+        int count = 0 ;
+        for(int i = 0 ; i<m ; i++)
+        {
+            for(int j = 0 ; j<n ; j++)
+            {
+                if(grid[i][j]<0)
+                {
+                    count ++ ;
+                }
+            }
+        }
+        return count ;
+    }
+}
