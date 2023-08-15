@@ -2063,3 +2063,33 @@ class Solution {
         return count ;
     }
 }
+// leetcode 168
+	
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int array[] = new int[2] ;
+        array[0] = -1  ;
+        array[1] =-1 ;
+        int size = numbers.length ;
+        int sum = 0 ;
+        if(size == 0)
+        {
+            return array ;
+        }
+        for(int i = 0 ; i<size ; i++)
+        {
+            sum = 0 ;
+            for(int j = i+1 ; j<size  ; j++)
+            {
+                sum = numbers[i]+numbers[j] ;
+                if(sum==target)
+                {
+                    array[0] = i +1  ;
+                    array[1] = j +1 ;
+                    break  ;
+                }
+            }
+        }
+        return array ;
+    }
+}
