@@ -2063,8 +2063,7 @@ class Solution {
         return count ;
     }
 }
-// leetcode 168
-	
+// leetcode 167 
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
         int array[] = new int[2] ;
@@ -2091,5 +2090,151 @@ class Solution {
             }
         }
         return array ;
+    }
+}
+
+// leetcode 2733 
+class Solution {
+    public int findNonMinOrMax(int[] nums) {
+        int size = nums.length  ;
+        Arrays.sort(nums) ;
+        if(size ==1 )
+        {
+            return -1 ;
+        }
+        else if (size ==2)
+        {
+            return -1  ;
+        }
+        else 
+        {
+            return nums[1] ;
+        }
+
+        
+    }
+}
+// leetcode 509
+class Solution {
+    public int fib(int n) {
+        if(n<=1)
+        {
+            return n ;
+        }
+        else 
+        {
+            return fib(n-1)+fib(n-2) ;
+        }
+    }
+}
+// leetcode 1137 using the deep learning 
+
+class Solution {
+    int[] dp = new int[38];
+    public int tribonacci(int n) {
+        
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 1;
+
+        for (int i = 3; i <= n; i++) {
+            dp[i] = dp[i-1] + dp[i-2] + dp[i-3];
+        }
+        return dp[n];
+    }   
+}
+// leetcode 220 41/44 passed
+
+class Solution {
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int indexDiff, int valueDiff) {
+        boolean flag = false  ;
+        int size  = nums.length  ;
+        for(int i = 0 ; i<size  ; i++)
+        {
+            for(int j = i+1 ; j<size  ; j++)
+            {
+                if(i!=j && Math.abs(i-j)<=indexDiff && Math.abs(nums[i] - nums[j]) <= valueDiff )
+                {
+                    flag = true  ;
+                }
+                else 
+                {
+                    continue ;
+                }
+            }
+        }
+        return flag  ;
+    }
+}
+
+// leetcode 287 
+class Solution {
+    public int findDuplicate(int[] nums) {
+        Arrays.sort(nums) ;
+        int size = nums.length ;
+        int count = 0 ;
+        for(int i = 0 ; i<size-1 ; i++)
+        {
+            if(nums[i]==nums[i+1])
+            {
+                count = nums[i] ;
+                break  ;
+            }
+        }
+        return count  ;
+    }
+        
+}
+// leetcode 2798
+class Solution {
+    public int numberOfEmployeesWhoMetTarget(int[] hours, int target) {
+        int size = hours.length ;
+        int res =  0   ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            if(hours[i]>=target)
+            {
+                res = res +1  ;
+
+            }
+        }
+        return res ;
+    }
+}
+// leetcode 391
+class Solution {
+    public int getSum(int a, int b) {
+        return a+b ;
+    }
+}
+// leetcode 2413
+class Solution {
+    public int smallestEvenMultiple(int n) {
+        if(n%2==0)
+        {
+            return n  ;
+        }
+        else 
+        {
+            return 2*n  ;
+        }
+        
+    }
+}
+// leetcode 912
+class Solution {
+    public int[] sortArray(int[] nums) {
+        Arrays.sort(nums);
+        return nums ;
+    }
+}
+
+// leetcode 628 
+class Solution {
+    public int maximumProduct(int[] nums) {
+         Arrays.sort(nums);
+        int len = nums.length;
+        
+        return Math.max(nums[0]*nums[1]*nums[len-1], nums[len-1] * nums[len-2] * nums[len-3]);
     }
 }
