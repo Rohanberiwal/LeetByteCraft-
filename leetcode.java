@@ -2238,3 +2238,45 @@ class Solution {
         return Math.max(nums[0]*nums[1]*nums[len-1], nums[len-1] * nums[len-2] * nums[len-3]);
     }
 }
+// leetcode 747 error 74/231
+	class Solution {
+    public int dominantIndex(int[] nums) {
+        int size = nums.length ; 
+        boolean flag = false ;
+        int count = -1 ;
+        int array[] = new int[size] ;
+        for(int i = 0 ; i<size ; i++)
+        { 
+            array[i] = nums[i] ;
+        }
+        Arrays.sort(nums) ;
+        int max = nums[size-1] ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            nums[i] = nums[i]*2 ;
+
+        }
+        for(int i = 0 ; i<size ;i++)
+        {
+            if(nums[i]>=max)
+            {
+                flag = true ;
+            }
+            else 
+            {
+                flag = false ;
+            }
+        }
+        if(flag == true)
+        {
+            for(int i = 0 ; i<size ; i++)
+            {
+                if(array[i]==max)
+                {
+                    count = i ;
+                }
+            }
+        }
+        return count  ;
+    }
+}
