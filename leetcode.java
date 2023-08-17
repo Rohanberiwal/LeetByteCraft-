@@ -2280,3 +2280,37 @@ class Solution {
         return count  ;
     }
 }
+// leetcode check if the array is good
+class Solution {
+    
+    public boolean isGood(int[] nums) {
+        Arrays.sort(nums) ;
+        
+        int n=nums.length;
+
+        int mx=nums[n-1];
+
+        if(mx+1!=n)
+        {
+            return false;
+        }
+        for(int i=0;i<n-2;i++)
+        {
+            if(nums[i]!=i+1)
+            {
+                return false;
+            }
+        }
+
+        if(nums[n-2]!=nums[n-1])
+        {
+            return false;
+        }
+
+        return true;
+        
+
+
+
+    }
+}
