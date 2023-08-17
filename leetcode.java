@@ -2314,3 +2314,124 @@ class Solution {
 
     }
 }
+// leetcode bucket sort algorithm 
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        
+        int n = nums.length;
+        List<Integer> ff[] = new List[n+1];
+
+        for(int i=0;i<=n;i++){
+            ff[i] = new ArrayList<>();
+        }
+
+        int ans[] = new int[k];
+
+        HashMap<Integer,Integer> map = new HashMap<>();
+
+        for(int i: nums){
+            map.put(i,map.getOrDefault(i,0)+1);
+        }
+
+        for(int key: map.keySet()){
+            int val = map.get(key);
+            ff[val].add(key);
+        }
+
+        int idx = 0;
+
+        for(int i=n;i>=0 && idx<k;i--){
+
+            if(!ff[i].isEmpty()){
+                
+                for(int e: ff[i]){
+                    ans[idx++] = e;
+                    if(idx>=k){
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        return ans;
+
+    }
+}
+// leetcode prime count used standard algorithm seive of 
+if(n==0) return 0;
+        int[] arr=new int[n+1];
+        int count=0;
+        Arrays.fill(arr,1);
+        arr[0]=arr[1]=0;
+        for(int i=2;i<n;i++)
+        {
+            if(arr[i]==1){
+                count++;
+                for(int j=2*i;j<n;j=j+i){
+                    arr[j]=0;
+                }
+            }
+        }
+        return count;
+// leetcodee question ton invert a binary search tree 
+  if (root == null) return null;
+        TreeNode tempRight = root.right;
+        root.right = invertTree(root.left);
+        root.left = invertTree(tempRight);
+        return root;
+// leetcode 2169 
+class Solution {
+    public int countOperations(int num1, int num2) {
+        int count =0 ;
+         if(num1==0 || num2 == 0)
+        {
+            return 0 ;
+        }
+        else 
+        {
+        while(num1!=0 || num2!=0)
+        {
+            if(num1 <num2)
+            {
+                num2 = num2 - num1 ;
+                count ++ ;
+            }
+            else if(num1==num2)
+            {
+                count ++ ; 
+                break ;
+                
+            }
+            else
+            {
+                num1 = num1 -num2 ;
+                count ++ ;
+            }
+           
+        }
+        }
+       
+         return count  ;
+
+    }
+
+}
+// leetcode 1342 
+class Solution {
+    public int numberOfSteps(int num) {
+        int count = 0;
+        while(num!=0){
+            if(num%2==0){
+                num=num/2;
+                count++;
+            }
+            else{
+                num-=1;
+                count++;
+            }
+        }
+        return count;
+
+    }
+}
