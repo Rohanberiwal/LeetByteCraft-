@@ -2238,8 +2238,8 @@ class Solution {
         return Math.max(nums[0]*nums[1]*nums[len-1], nums[len-1] * nums[len-2] * nums[len-3]);
     }
 }
-// leetcode 747 error 74/231
-	class Solution {
+// leetcode 747 error 
+class Solution {
     public int dominantIndex(int[] nums) {
         int size = nums.length ; 
         boolean flag = false ;
@@ -2280,40 +2280,7 @@ class Solution {
         return count  ;
     }
 }
-// leetcode check if the array is good
-class Solution {
-    
-    public boolean isGood(int[] nums) {
-        Arrays.sort(nums) ;
-        
-        int n=nums.length;
 
-        int mx=nums[n-1];
-
-        if(mx+1!=n)
-        {
-            return false;
-        }
-        for(int i=0;i<n-2;i++)
-        {
-            if(nums[i]!=i+1)
-            {
-                return false;
-            }
-        }
-
-        if(nums[n-2]!=nums[n-1])
-        {
-            return false;
-        }
-
-        return true;
-        
-
-
-
-    }
-}
 // leetcode bucket sort algorithm 
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
@@ -2433,5 +2400,26 @@ class Solution {
         }
         return count;
 
+    }
+}
+// leetcode duplicate contianer II time limit excedded error on 46/57
+
+
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        boolean flag = false ;
+        Arrays.sort(nums)
+        for(int i = 0 ; i<nums.length ; i++)
+        {
+                for(int j =  i+1  ; j<nums.length ; j++)
+                {
+                    if(nums[i]==nums[j] && Math.abs(i-j)<=k)
+                    {
+                        flag = true ;
+                        break ;
+                    }
+                }
+        }
+        return flag  ;
     }
 }
