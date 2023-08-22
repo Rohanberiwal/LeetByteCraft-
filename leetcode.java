@@ -2942,4 +2942,123 @@ class Main
         }
     }
   }
-  
+  // leetcode 1342 
+class Solution {
+    public int numberOfSteps(int num) {
+        int count = 0;
+        while(num!=0){
+            if(num%2==0){
+                num=num/2;
+                count++;
+            }
+            else{
+                num-=1;
+                count++;
+            }
+        }
+        return count;
+
+    }
+}
+// leetcode duplicate contianer II time limit excedded error on 46/57
+
+
+class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        boolean flag = false ;
+        Arrays.sort(nums)
+        for(int i = 0 ; i<nums.length ; i++)
+        {
+                for(int j =  i+1  ; j<nums.length ; j++)
+                {
+                    if(nums[i]==nums[j] && Math.abs(i-j)<=k)
+                    {
+                        flag = true ;
+                        break ;
+                    }
+                }
+        }
+        return flag  ;
+    }
+}
+// leetcode question player that is winner 
+class Solution {
+    public boolean predictTheWinner(int[] nums) {
+        int player1  = 0 ;
+        int player2 = 0 ;
+        int size  = nums.length ;
+        int maxmin =  nums[0] ;
+        int minmax = nums[size-1] ;
+        if(maxmin>minmax)
+        {
+            for(int i = 0 ; i<size ; i=i+2)
+            {
+                player1 =  player1+ nums[i] ;
+            }
+            for(int i =1  ; i<size  ; i= i+2)
+            {
+                player2 = player2 + nums[i] ;
+            }
+        }
+        else 
+        {
+            for(int j = size-1  ; j>=0 ;  j = j-2)
+            {
+                player1 = player1 + nums [j] ;
+            }
+            for(int j = size-2  ; j>=0  ; j= j-2)
+            {
+                player2= player2 +nums[j] ;
+            }
+        }
+        if(player1>player2)
+        {
+            return true  ;
+        }
+        else 
+        {
+            return false  ;
+        }
+        
+    }
+}
+// leetcode 2616
+import java.util.*;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size =  sc.nextInt() ;
+        int array[]= new int[size] ;
+        for(int i = 0 ; i<size  ; i++)
+        {
+            System.out.print("enter") ;
+            array[i] = sc.nextInt() ;
+        }
+        Arrays.sort(array);
+        int matrix[][] = new int[size][size] ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            for(int j = i+1 ; j<size ; j++)
+            {
+               int  diff = array[i] -array[j] ;
+               matrix[i][j]  = diff  ;
+
+            }
+        }
+        int min = matrix[0][0] ;
+        for(int i = 0 ; i<size  ; i++)
+        {
+            for(int j = 0 ; j<size ; j++)
+            {
+                if(matrix[i][j]<min)
+                {
+                    min = matrix[i][j] ;
+
+                }
+            }
+        }
+        System.out.println("the smallest elemtn is "+min) ;
+    }
+}
