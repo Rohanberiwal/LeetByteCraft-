@@ -3062,3 +3062,133 @@ class Main
         System.out.println("the smallest elemtn is "+min) ;
     }
 }
+import java.util.*;
+class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size =  sc.nextInt() ;
+        int array[]= new int[size] ;
+        for(int i = 0 ; i<size  ; i++)
+        {
+            System.out.print("enter") ;
+            array[i] = sc.nextInt() ;
+        }
+        Arrays.sort(array);
+        int matrix[][] = new int[size][size] ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            for(int j = i+1 ; j<size ; j++)
+            {
+               int  diff = array[i] -array[j] ;
+               matrix[i][j]  = diff  ;
+
+            }
+        }
+        int min = matrix[0][0] ;
+        for(int i = 0 ; i<size  ; i++)
+        {
+            for(int j = 0 ; j<size ; j++)
+            {
+                if(matrix[i][j]<min)
+                {
+                    min = matrix[i][j] ;
+
+                }
+            }
+        }
+        System.out.println("the smallest elemtn is "+min) ;
+    }
+}
+// leetcode for first word occure twice 
+
+class Solution {
+    public char repeatedCharacter(String s) {
+        int[] chars = new int[26];
+        for (char c : s.toCharArray()) {
+            int index = c - 'a';
+            chars[index]++;
+            if (chars[index] == 2) return c;
+        }
+        return 'a';
+    }
+    
+}
+// leetcode 387 large stringn pe tle 
+
+class Solution {
+    public int firstUniqChar(String s) {
+        char array[] = s.toCharArray()  ;
+        int size  = array.length ; 
+        int index[] = new int[size]  ;
+        for(int i = 0 ; i<size ; i++)
+        {
+            index[i] = 1  ;
+        }
+        for(int i = 0 ; i<size  ; i++)
+        {
+            for(int j = i+1 ; j<size  ; j++)
+            {
+                if(array[i]==array[j])
+                {
+                    index[i]=0 ;
+                    index[j]=0 ;
+
+                }
+            }
+
+        }
+        int nums = -1;
+        for(int i = 0 ; i<size  ; i++)
+        {
+            if(index[i]!=0)
+            {
+                nums = i ;
+                break ;
+            }
+        }
+        return nums ;
+       
+    }
+}
+// leetcode 2367 
+
+import java.util.*;
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int size = sc.nextInt() ;
+        int array[] = new int [size] ;
+        for(int i = 0 ; i<size ;  i++)
+        {
+            System.out.print("enter the inputs") ;
+               array[i]=  sc.nextInt() ;
+        }
+        Arrays.sort(array) ;
+        System.out.println("enter the diff ") ;
+        int diff = sc.nextInt() ;
+        for(int i = 0 ; i<size  ; i++)
+        {
+            for(int j = i+1  ; j<size ;  j++)
+            {
+                for(int k= j+1  ; k<size  ; k++)
+                {
+                    if(i<j && j<k && array[j]-array[i]==diff && array[k]-array[j] == diff )
+                    {
+                        System.out.println(" "+array[i]);
+                         System.out.println(" "+array[j]);
+                          System.out.println(" "+array[k]);
+                    }
+               
+                }
+               
+
+
+        }
+        System.out.print("\n") ;
+    }
+}
+}
