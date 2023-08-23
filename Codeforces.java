@@ -180,3 +180,98 @@ class Main
         
     }
 }
+// codeforces 214A
+import java.util.*;
+public class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc= new Scanner(System.in) ;
+        int n = sc.nextInt() ;
+        int m  = sc.nextInt() ;
+        System.out.println("a2 + b = m");
+        System.out.println("a + b2 = m");
+        int max = 0 ;
+        if(m>n)
+        {
+            max = m ;
+        }
+        else 
+        {
+            max = n ;
+        }
+        int count = 0 ;
+        for(int i = 0 ; i<max  ; i++)
+        {
+           if((i + Math.pow((n-Math.pow(i,2)),2)==m)) 
+           {
+            count++ ;
+           }
+
+        }
+        System.out.print(" "+count);
+    }
+
+}
+// string name 
+import java.util.*;
+
+public class main
+{
+
+static String largestPalinSub(String s)
+{
+    String res = "";
+    char mx = s.charAt(0);
+ 
+    for (int i = 1; i < s.length(); i++)
+        mx = (char)Math.max((int)mx,
+                  (int)s.charAt(i));
+    for (int i = 0; i < s.length(); i++)
+        if (s.charAt(i) == mx)
+            res += s.charAt(i);
+ 
+    return res;
+}
+ 
+public static void main(String agrs[])
+{
+    Scanner sc = new Scanner(System.out.print) ;
+    String name  = sc.nextLine() ;
+    System.out.println(largestPalinSub(s));
+}
+}
+// 41 wrong answer 
+// codeforces 214A
+import java.util.*;
+public class Main 
+{
+    public static void main(String args[])
+    {
+        Scanner sc= new Scanner(System.in) ;
+        int n = sc.nextInt() ;
+        int m  = sc.nextInt() ;
+        System.out.println("a2 + b = m");
+        System.out.println("a + b2 = m");
+        int max = 0 ;
+        if(m>n)
+        {
+            max = m ;
+        }
+        else 
+        {
+            max = n ;
+        }
+        int count = 0 ;
+        for(int i = 0 ; i<=max  ; i++)
+        {
+           if((i + Math.pow((n-Math.pow(i,2)),2)==m)) 
+           {
+            count++ ;
+           }
+
+        }
+        System.out.print(" "+count);
+    }
+
+}
