@@ -3192,3 +3192,133 @@ class Main
     }
 }
 }
+// leetcode 825  erro in the count value 
+
+class Solution {
+    public int numFriendRequests(int[] ages) {
+        int size = ages.length ;
+        int count = 0 ;
+        for (int i = 0 ; i <size  ; i++)
+        {
+            for(int j = i+1 ; j<size  ; j++)
+            {
+                if(i==j || ages[i]==ages[j] && ages[i]<100 || ages[j]<100)
+                {
+                  count ++  ;
+                }
+                else 
+                {
+                    continue  ;
+                }
+            }
+        }
+        return count ;
+    }
+}
+// leetcode 387 <hashmap> used in this 
+
+class Solution {
+    public int firstUniqChar(String s) {
+        HashMap<Character, Integer> hm = new HashMap<>();
+        
+        for(int i = 0; i < s.length(); i++)
+            hm.put(s.charAt(i), hm.getOrDefault(s.charAt(i), 0) + 1);
+        
+        for(int i = 0; i < s.length(); i++)
+            if(hm.get(s.charAt(i)) == 1) return i;
+        
+        return -1;
+    }
+}
+// predcit the winner leetcode 
+
+class Solution {
+    public boolean predictTheWinner(int[] nums) {
+        int player1  = 0 ;
+        int player2 = 0 ;
+        int size  = nums.length ;
+        int maxmin =  nums[0] ;
+        int minmax = nums[size-1] ;
+        if(maxmin>minmax)
+        {
+            for(int i = 0 ; i<size ; i=i+2)
+            {
+                player1 =  player1+ nums[i] ;
+            }
+            for(int i =1  ; i<size  ; i= i+2)
+            {
+                player2 = player2 + nums[i] ;
+            }
+        }
+        else 
+        {
+            for(int j = size-1  ; j>=0 ;  j = j-2)
+            {
+                player1 = player1 + nums [j] ;
+            }
+            for(int j = size-2  ; j>=0  ; j= j-2)
+            {
+                player2= player2 +nums[j] ;
+            }
+        }
+        if(player1>player2)
+        {
+            return true  ;
+        }
+        else 
+        {
+            return false  ;
+        }
+        
+    }
+}
+// leetcode 2616 copied form the submission 
+
+class Solution {
+        public int minimizeMax(int[] nums, int p){
+        Arrays.sort(nums);
+        int n=nums.length,l=0,r=nums[n-1]-nums[0];
+        while(l<r){
+            int mid=(l+ r)/2,k=0;
+            for(int i=1;i<n && k<p;i++){
+                if(nums[i]-nums[i-1]<=mid){
+                    k++;
+                    i++;
+                }
+            }
+            if(k>=p) r=mid;
+            else l=mid + 1;
+        }
+        return l;
+    }
+}
+// my actual code with 772/1548 passed for 2616
+
+class Solution {
+    public int minimizeMax(int[] nums, int p) {
+        int size = nums.length  ;
+        int index[] = new int[size] ;
+        int min  = -1 ;
+        Arrays.sort(nums) ;
+        for(int i = 0 ; i<size ;  i++)
+        {
+            for(int j = 0 ; j<size  ; j++)
+            {
+                if(min>nums[j]-nums[i])
+                {
+                    min   = nums[i]-nums[j];
+                }
+            }
+            index[i] = min ; 
+        }
+        int max = 0;
+        for(int i = 0 ; i<p  ; i++)
+        {
+            if(index[i]>max)
+            {
+                max = index[i] ;
+            }
+        }
+        return max ;
+    }
+}
