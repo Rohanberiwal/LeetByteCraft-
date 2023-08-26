@@ -327,3 +327,54 @@ class Main
 
     }
 }
+import java.util.*;
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in) ;
+        int row  = sc.nextInt()  ;
+        int col  = sc.nextInt() ;
+        String array[][] = new String[row][col] ;
+        for(int i = 0 ; i<row ; i++)
+        {
+            for(int j = 0 ; j<col ; j++)
+            {
+                System.out.print("enter ");
+                array[i][j] = sc.next() ;
+            }
+        }
+        for(int i = 0 ; i<row ; i++)
+        {
+            for(int j = 0 ; j<col  ; j++)
+            {
+                System.out.print(" "+array[i][j]) ;
+            }
+            System.out.print("\n");
+        }
+        int starcounter = 0 ;
+        int calc[] = new int[row] ;
+        for(int i = 0 ; i<row  ;  i++)
+        {
+            starcounter = 0  ;
+            for(int j = 0 ; j<col ; j++)
+            {
+                if(array[i][j]=="*")
+                {
+                    starcounter++ ;
+                }
+            }
+            calc[i] = starcounter ;
+        }
+        int index = 0 ;
+        for(int k = 0 ; k<row  ; k++)
+        {
+            if(calc[k]==1)
+            {
+                index = calc[k] ;
+            }
+        }
+        System.out.print("the index is "+index+1);
+
+    }
+}
