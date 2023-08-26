@@ -3322,3 +3322,127 @@ class Solution {
         return max ;
     }
 }
+/ leetcode 2616 copied form the submission 
+
+class Solution {
+        public int minimizeMax(int[] nums, int p){
+        Arrays.sort(nums);
+        int n=nums.length,l=0,r=nums[n-1]-nums[0];
+        while(l<r){
+            int mid=(l+ r)/2,k=0;
+            for(int i=1;i<n && k<p;i++){
+                if(nums[i]-nums[i-1]<=mid){
+                    k++;
+                    i++;
+                }
+            }
+            if(k>=p) r=mid;
+            else l=mid + 1;
+        }
+        return l;
+    }
+}
+// my actual code with 772/1548 passed for 2616
+
+class Solution {
+    public int minimizeMax(int[] nums, int p) {
+        int size = nums.length  ;
+        int index[] = new int[size] ;
+        int min  = -1 ;
+        Arrays.sort(nums) ;
+        for(int i = 0 ; i<size ;  i++)
+        {
+            for(int j = 0 ; j<size  ; j++)
+            {
+                if(min>nums[j]-nums[i])
+                {
+                    min   = nums[i]-nums[j];
+                }
+            }
+            index[i] = min ; 
+        }
+        int max = 0;
+        for(int i = 0 ; i<p  ; i++)
+        {
+            if(index[i]>max)
+            {
+                max = index[i] ;
+            }
+        }
+        return max ;
+    }
+}
+// leetcode house robber 198
+class Solution {
+    public int rob(int[] nums) {
+        int size  = nums.length ;
+        int oddsum = 0;
+        int  sum =  0 ;
+        int evensum  = 0 ;
+        for(int i = 0 ; i<size ;  i= i+2)
+        {
+                sum  = sum + nums[i];
+        }
+        int sum2= 0;
+        for(int j = 1 ; j<size  ; j = j+2)
+        {
+            sum2  = sum2+ nums[j] ;
+        }
+        int amd  = 0 ;
+        if(sum>sum2)
+        {
+            amd = sum  ;
+
+        }
+        else if(sum2>sum)
+        {
+            amd = sum2 ;
+        }
+        else if(sum==sum2)
+        {
+            amd  = nums[0]+nums[size-1];                 
+        }
+        return amd ;
+    }
+}
+
+// dynamic programming in the house robbery 
+class Solution {
+    public int rob(int[] nums) {
+	    int last = nums[0];
+        int lastx = 0;
+        int size  = nums.length ;
+        for(int i=1;i<size;i++){
+            int pick = nums[i];
+            if(i > 1) pick += lastx ;
+            
+            int nonpick = last;
+            int cur = Math.max(pick,nonpick);
+            lastx = last;
+            last = cur;
+        }
+        return last;
+    }
+}
+// leetcode 152 
+class Solution {
+    public int maxProduct(int[] nums) {
+        int size  = nums.length  ;
+        int array[]  = new int[size-1] ;
+        int i = 0 ;
+        int product = 1 ;
+        while(i!=size-1)
+        {
+            int j  = i+1  ;
+            product = 1 ;
+            product =  nums[i]*nums[j] ;
+            array[i]  = product ;
+            i++ ;
+
+
+        }
+        Arrays.sort(array) ;
+        return array[size-2] ;
+
+    }
+}
