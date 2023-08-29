@@ -3446,3 +3446,22 @@ class Solution {
 
     }
 }
+
+//leetcode reverse linked list 
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+         ListNode n=head;
+        ListNode temp=head;
+        ListNode prev=null;
+        while(temp!=null)
+        {
+            n=temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=n;
+        }
+        head=prev;
+        return head;
+    }
+}
