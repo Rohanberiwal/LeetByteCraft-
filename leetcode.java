@@ -3465,3 +3465,54 @@ class Solution {
         return head;
     }
 }
+//leetcode reverse linked list in java
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+         ListNode n=head;
+        ListNode temp=head;
+        ListNode prev=null;
+        while(temp!=null)
+        {
+            n=temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=n;
+        }
+        head=prev;
+        return head;
+    }
+}
+// leetcode 1502 
+
+class Solution {
+    public boolean canMakeArithmeticProgression(int[] arr) {
+        int size = arr.length ;
+        int array[] = new int[size-1] ;
+        Arrays.sort(arr) ;
+        if(size>1)
+        {
+            int diff =  arr[1] - arr[0] ;
+            for(int i = 0 ; i<size-1 ;  i++)
+            {
+                int j =  i+1;
+                array[i] = arr[j]-arr[i] ;
+
+            }
+        }
+        int x  = array[0] ;
+        int count = 0 ;
+        for(int i = 0 ;i<size-1  ; i++)
+        {
+           if(array[i] == x)
+           {
+               count = count +1 ;
+           }
+        }
+        if((size-1)==count)
+        {
+            return true  ;
+        }
+    return false ;
+    }
+} 
